@@ -1,0 +1,51 @@
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map-one' class='map'> </div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoicHVsaXR6ZXJjZW50ZXIiLCJhIjoiOG5xbmNMQSJ9.JS3QHW6DsBtZb8nVv_kVxg';
+var geojson = [
+ {
+ "type": "FeatureCollection",
+ "features": [
+ 	{
+ 		"type": "Feature",
+ 		"geometry": {
+ 		  "type": "Point",
+ 		  "coordinates": [
+ 		  10.28969,
+ 		  11.16729
+ 		  ]
+ 		 },
+ 		 "properties": {
+         "title": "The White House",
+         "marker-color": "#9c89cc",
+         "marker-size": "medium",
+         "marker-symbol": "building"}
+ 	 	}
+ 	 }
+ 	 ]
+ }
+ 
+ ];
+ var map = L.mapbox.map('map-one', 'pulitzercenter.a6833bf1', {
+	scrollWheelZoom: false
+}).setView([9.0820,8.6753],16);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.setGeoJSON(geojson);
+</script>
+</body>
+</html>
